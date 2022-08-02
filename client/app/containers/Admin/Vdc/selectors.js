@@ -1,0 +1,71 @@
+import { createSelector } from 'reselect';
+import { initialState } from './reducer';
+
+/**
+ * Direct selector to the vdc state domain
+ */
+
+export const selectDomain = state => state.vdc || initialState;
+
+/**
+ * Other specific selectors
+ */
+
+export const makeSelectAll = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.all,
+  );
+
+export const makeSelectOne = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.one,
+  );
+
+export const makeSelectQuery = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.query,
+  );
+
+export const makeSelectLoading = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.loading,
+  );
+
+export const makeSelectErrors = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.errors,
+  );
+
+export const makeSelectDistrict = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.district,
+  );
+
+export const makeSelectState = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.state,
+  );
+
+export const makeSelectActiveStatus = () =>
+  createSelector(
+    selectDomain,
+    substate => substate.active_status,
+  );
+/**
+ * Default selector used by vdc
+ */
+
+const makeSelectvdc = () =>
+  createSelector(
+    selectDomain,
+    substate => substate,
+  );
+
+export default makeSelectvdc;

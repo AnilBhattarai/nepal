@@ -1,0 +1,22 @@
+.masonary {
+  @apply grid grid-rows-3 grid-flow-col gap-4;
+  max-height: 700px;
+}
+.masonary li {
+  @apply grid-rows-1;
+}
+.masonary li:first-child {
+  @apply row-span-6 mt-20 mb-10;
+}
+.masonary li:nth-child(2) {
+  @apply row-span-3;
+}
+.masonary li:nth-child(3) {
+  @apply row-span-3;
+}
+.masonary li:nth-child(4) {
+  @apply row-span-5 mt-10;
+}
+.masonary li:nth-child(5) {
+  @apply row-span-1 mb-10;
+}

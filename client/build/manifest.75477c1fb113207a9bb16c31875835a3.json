@@ -1,0 +1,67 @@
+{
+  "icons": [
+    {
+      "src": "/icon_180x180.be40dd8b85fb7d23b1e8c2fe00a17012.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_167x167.66a811bbdf9ccf21c388c42ebf5a7709.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_152x152.33fa830241ac0df7adae01e99e494f13.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_120x120.1ebf1b7bfe90a8ea6814d2cda9f251e7.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_512x512.a30304b17ecfaca762c4850c2c570c41.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_384x384.64cbb44f79dc80a811b8b4543c386c17.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_192x192.aa3121aca334356cc5a66707acafaec5.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_144x144.33dd7200fa877e8da84a3f9b936a8334.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_128x128.306a097426c0f9cbfce43ab731d5c09a.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_96x96.abf87ed7faf2b904f42235b6d0860d4b.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_72x72.1c03d18b84c4588fbfcac852b065d922.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ],
+  "name": "Nepal Homes",
+  "short_name": "nepalhomes.com",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Nepal Biggest Realstate Platform!",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF"
+}

@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"nepal-homes.companies"},{"v":2,"unique":true,"key":{"email":1},"name":"email_1","ns":"nepal-homes.companies","background":true}],"uuid":"4a1190ed438c4517b2b70b7204aaf02e"}

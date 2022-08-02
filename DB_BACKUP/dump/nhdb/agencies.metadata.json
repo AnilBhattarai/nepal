@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"nepal-homes.agencies"},{"v":2,"unique":true,"key":{"slug_url":1},"name":"slug_url_1","ns":"nepal-homes.agencies","background":true}],"uuid":"8a432fcf492a47c19013fee661b363dc"}

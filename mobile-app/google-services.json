@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "521974798939",
+    "firebase_url": "https://nepal-homes.firebaseio.com",
+    "project_id": "nepal-homes",
+    "storage_bucket": "nepal-homes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521974798939:android:eb65bba484315cb3973d7e",
+        "android_client_info": {
+          "package_name": "host.exp.Exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521974798939-ltj49d51ohn4relck4cp917rr5m3o0sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpOice6qiBvYebvBg-6JYyzC-Hfz6FUg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521974798939-ltj49d51ohn4relck4cp917rr5m3o0sq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "521974798939-04r80dabdih7mk2edk053g5r8ri6quvn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.Exponent"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521974798939:android:59c9164a872d73db973d7e",
+        "android_client_info": {
+          "package_name": "nh.wafttech.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521974798939-7ah11sa431mldsrbct374gsu16p9jpet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nh.wafttech.com",
+            "certificate_hash": "bd114653febb690ad0eaf31d8c8ba19f00446b8f"
+          }
+        },
+        {
+          "client_id": "521974798939-ltj49d51ohn4relck4cp917rr5m3o0sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpOice6qiBvYebvBg-6JYyzC-Hfz6FUg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521974798939-ltj49d51ohn4relck4cp917rr5m3o0sq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "521974798939-04r80dabdih7mk2edk053g5r8ri6quvn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.Exponent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

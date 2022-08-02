@@ -1,0 +1,1 @@
+mongorestore --uri mongodb+srv://nepalhomes:nepalhomes1@dev.ruscd.mongodb.net

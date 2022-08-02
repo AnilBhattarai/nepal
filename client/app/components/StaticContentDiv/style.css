@@ -1,0 +1,30 @@
+.staticCont ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.innertitle {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+}
+
+.innerside div {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.innerside div label {
+  color: #000000;
+}
+
+@media screen and (max-width: 1024px) {
+  .innerside {
+    margin-top: 16px;
+  }
+}

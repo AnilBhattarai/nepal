@@ -1,0 +1,8 @@
+.PopUpSlider .slick-dots {
+    bottom: 30px;
+}
+
+.PopUpSlider .slick-dots li.slick-active button:before{
+    background: #1150A0;
+    opacity: 1;
+}

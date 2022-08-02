@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>521974798939-0co9ftonu4570dsccfnqsmnt1sh5oi5k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.521974798939-0co9ftonu4570dsccfnqsmnt1sh5oi5k</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>521974798939-ejo689e3pqt8dv13uger8fil4d3oe8to.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC7fnwPUn0CpI_rL3H0SyqxHRtnpW9O34U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>521974798939</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>nh.wafttech.com</string>
+	<key>PROJECT_ID</key>
+	<string>nepal-homes</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nepal-homes.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:521974798939:ios:296b3d243e73fa47973d7e</string>
+	<key>DATABASE_URL</key>
+	<string>https://nepal-homes.firebaseio.com</string>
+</dict>
+</plist>

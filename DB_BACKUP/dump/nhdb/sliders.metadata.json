@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"nepal-homes.sliders"},{"v":2,"unique":true,"key":{"slider_key":1},"name":"slider_key_1","ns":"nepal-homes.sliders","background":true}],"uuid":"56d5c56650c945969687354f3881bee2"}

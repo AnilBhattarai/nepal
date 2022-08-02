@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="browse-task" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="filter-applicants" transform="translate(-325.000000, -109.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="iconfinder_shield_3671858" transform="translate(325.000000, 109.000000)">
+                <path d="M11.6666667,7.7 C11.5801195,9.40147464 10.7343247,10.9517441 9.39814815,11.858 L5.83333333,14 L2.26851852,11.858 C0.932341964,10.9517441 0.0865471253,9.40147464 0,7.7 L0,2.1 C2.19074074,2.1 4.21296296,1.316 5.83333333,0 C7.4537037,1.323 9.47592593,2.1 11.6666667,2.1 L11.6666667,7.7 Z M5.7776514,8.83438873 L8.10037861,10.3979165 L7.28106045,7.78437256 L9.54015129,6.13653696 L6.70833319,6.07522215 L5.7776514,3.5 L4.84696961,6.07522215 L2.01515152,6.13653696 L4.26628781,7.77670821 L3.44696965,10.3825878 L5.7776514,8.84205308 L5.7776514,8.83438873 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

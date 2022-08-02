@@ -1,0 +1,13 @@
+
+.table th { white-space: nowrap;}
+
+.table tr td { border-bottom:1px solid #ECEFF3; }
+
+.table tr:hover td {
+  background: #F4F6F8;
+}
+
+@media screen and (max-width:900px) {
+  [class*=" MuiToolbar-gutters"]  { padding:0 !important;}
+[class*="MuiTablePagination-input"] + [class*="MuiTablePagination-caption"] { display: none !important;}
+}

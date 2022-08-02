@@ -1,0 +1,124 @@
+/*
+ *
+ * District actions
+ *
+ */
+
+import * as types from './constants';
+
+export const loadAllRequest = payload => ({
+  type: types.LOAD_ALL_REQUEST,
+  payload,
+});
+export const loadAllSuccess = payload => ({
+  type: types.LOAD_ALL_SUCCESS,
+  payload,
+});
+export const loadAllFailure = payload => ({
+  type: types.LOAD_ALL_FAILURE,
+  payload,
+});
+
+export const loadOneRequest = payload => ({
+  type: types.LOAD_ONE_REQUEST,
+  payload,
+});
+export const loadOneSuccess = payload => ({
+  type: types.LOAD_ONE_SUCCESS,
+  payload,
+});
+export const loadOneFailure = payload => ({
+  type: types.LOAD_ONE_FAILURE,
+  payload,
+});
+
+export const addEditRequest = payload => ({
+  type: types.ADD_EDIT_REQUEST,
+  payload,
+});
+export const addEditSuccess = payload => ({
+  type: types.ADD_EDIT_SUCCESS,
+  payload,
+});
+export const addEditFailure = payload => ({
+  type: types.ADD_EDIT_FAILURE,
+  payload,
+});
+
+export const deleteOneRequest = payload => ({
+  type: types.DELETE_ONE_REQUEST,
+  payload,
+});
+export const deleteOneSuccess = payload => ({
+  type: types.DELETE_ONE_SUCCESS,
+  payload,
+});
+export const deleteOneFailure = payload => ({
+  type: types.DELETE_ONE_FAILURE,
+  payload,
+});
+
+export const setOneValue = payload => ({
+  type: types.SET_ONE_VALUE,
+  payload,
+});
+export const clearOne = () => ({
+  type: types.CLEAR_ONE,
+});
+export const setQueryValue = payload => ({
+  type: types.SET_QUERY_VALUE,
+  payload,
+});
+export const clearQuery = () => ({
+  type: types.CLEAR_QUERY,
+});
+export const clearErrors = () => ({
+  type: types.CLEAR_ERRORS,
+});
+
+export const setIsActive = () => ({
+  type: types.SET_IS_ACTIVE,
+});
+
+export const loadStateRequest = payload => ({
+  type: types.LOAD_STATE_REQUEST,
+  payload,
+});
+export const loadStateSuccess = payload => ({
+  type: types.LOAD_STATE_SUCCESS,
+  payload,
+});
+export const loadStateFailure = payload => ({
+  type: types.LOAD_STATE_FAILURE,
+  payload,
+});
+
+export const setVdcs = payload => ({
+  type: types.SET_VDCS,
+  payload,
+});
+
+export const addVdcs = payload => ({
+  type: types.ADD_VDCS,
+  payload,
+});
+
+export const deleteVdcs = payload => ({
+  type: types.DELETE_VDCS,
+  payload,
+});
+
+export const addIsActiveRequest = payload => ({
+  type: types.ADD_IS_ACTIVE_REQUEST,
+  payload,
+});
+
+export const addIsActiveSuccess = payload => ({
+  type: types.ADD_IS_ACTIVE_SUCCESS,
+  payload,
+});
+
+export const addIsActiveFailure = payload => ({
+  type: types.ADD_IS_ACTIVE_FAILURE,
+  payload,
+});

@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "NepalHomes.com",
+    "slug": "nepalhomes",
+    "privacy": "public",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "nh.wafttech.com",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.521974798939-0co9ftonu4570dsccfnqsmnt1sh5oi5k"
+        }
+      },
+      "infoPlist": {
+        "NSCameraUsageDescription": "NepalHomes uses your Camera Access to take Photos.",
+        "NSPhotoLibraryUsageDescription": "NepalHomes uses your Media Access to Upload Photos."
+      }
+    },
+    "android": {
+      "package": "nh.wafttech.com",
+      "googleServicesFile": "./google-services.json"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "waft-technology-7q",
+            "project": "nepal-homes",
+            "authToken": "ed9129741e9e458e83986b5fde1e13c90a3604023af34680a78809759637e27c"
+          }
+        }
+      ]
+    }
+  }
+}

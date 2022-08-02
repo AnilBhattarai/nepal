@@ -1,0 +1,8 @@
+.AdvertiseSlider .slick-dots {
+    bottom: 30px;
+}
+
+.AdvertiseSlider .slick-dots li.slick-active button:before{
+    background: #1150A0;
+    opacity: 1;
+}

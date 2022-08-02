@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" async="" src="./Hot Properties_files/analytics.js.download"></script>
+    <script async="" src="./Hot Properties_files/js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-150840081-2');
+    </script>
+    <title>Hot Properties</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .wrapper {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+      }
+      .grid {
+        display: flex;
+        margin: 0 -4px;
+        transition: transform 0.5s cubic-bezier(0, 1.1, 0.26, 1.08);
+      }
+      .item {
+        flex: 0 0 246px;
+        padding: 0 10px;
+      }
+      .firstGroup {
+        display: flex;
+      }
+      .secondGroup {
+        display: none;
+      }
+      .thirdGroup {
+        display: none;
+      }
+      .heading {
+        color: #616161;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.4;
+      }
+      .heading:hover {
+        color: #0291dd;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img.image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .arrow {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+      }
+      .arrow.left {
+        margin-right: 10px;
+      }
+      .left-arrow,
+      .right-arrow {
+        position: absolute;
+        right: 2px;
+        top: 18px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        opacity: 0;
+      }
+      .left-arrow {
+        right: 44px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .wrapper {
+          width: 100%;
+        }
+
+        .grid {
+          display: block;
+        }
+        .heading {
+          width: 99%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    </style>
+
+    <script type="text/javascript">
+      let currentGroup = 1;
+      function functionRight() {
+        // document.getElementById("rightArrow").style.opacity = "0.4";
+        // document.getElementById("checkboxRight").style.cursor = "default";
+        // document.getElementById("checkboxLeft").style.cursor = "pointer";
+        // document.getElementById("leftArrow").style.opacity = "1";
+        document.getElementById('leftArrow').style.opacity = '1';
+        document.getElementById('checkboxLeft').style.cursor = 'pointer';
+
+        if (currentGroup === 1) {
+          document.getElementById('firstGroup').style.display = 'none';
+          document.getElementById('secondGroup').style.display = 'flex';
+          document.getElementById('thirdGroup').style.display = 'none';
+          document.getElementById('rightArrow').style.opacity = '1';
+          document.getElementById('checkboxRight').style.cursor = 'pointer';
+
+          currentGroup = 2;
+        } else if (currentGroup === 2) {
+          document.getElementById('firstGroup').style.display = 'none';
+          document.getElementById('secondGroup').style.display = 'none';
+          document.getElementById('thirdGroup').style.display = 'flex';
+          document.getElementById('rightArrow').style.opacity = '0.4';
+          document.getElementById('checkboxRight').style.cursor = 'default';
+
+          currentGroup = 3;
+        }
+      }
+      function functionLeft() {
+        document.getElementById('rightArrow').style.opacity = '1';
+        document.getElementById('checkboxRight').style.cursor = 'pointer';
+        if (currentGroup === 2) {
+          document.getElementById('firstGroup').style.display = 'flex';
+          document.getElementById('secondGroup').style.display = 'none';
+          document.getElementById('thirdGroup').style.display = 'none';
+          document.getElementById('leftArrow').style.opacity = '0.4';
+          document.getElementById('checkboxLeft').style.cursor = 'default';
+
+          currentGroup = 1;
+        } else if (currentGroup === 3) {
+          document.getElementById('firstGroup').style.display = 'none';
+          document.getElementById('secondGroup').style.display = 'flex';
+          document.getElementById('thirdGroup').style.display = 'none';
+          document.getElementById('leftArrow').style.opacity = '1';
+          document.getElementById('checkboxLeft').style.cursor = 'pointer';
+          currentGroup = 2;
+        }
+
+        // document.getElementById("leftArrow").style.opacity = "0.4";
+        // document.getElementById("checkboxLeft").style.cursor = "default";
+        // document.getElementById("checkboxRight").style.cursor = "pointer";
+        // document.getElementById("rightArrow").style.opacity = "1";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div style="display: flex">
+        <h2 style="font-size: 22px; font-weight: bold; padding: 20px"><span style="color: #2c357d">Hot </span><span style="color: #0291dd">Properties</span></h2>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end">
+          <span class="arrow left" id="leftArrow" style="opacity: 1">
+            <img style="width: 16px; height: 16px; transform: rotateY(-180deg)" src="./Hot Properties_files/89D60042BDEB12C-arrow.png" />
+          </span>
+          <span class="arrow" id="rightArrow" style="opacity: 0.4">
+            <img style="width: 16px; height: 16px" src="./Hot Properties_files/89D60042BDEB12C-arrow.png" />
+          </span>
+        </div>
+      </div>
+      <input id="checkboxLeft" class="left-arrow" onclick="functionLeft();" style="cursor: default" />
+      <input id="checkboxRight" class="right-arrow" onclick="functionRight();" style="cursor: pointer" />
+      <div class="grid" id="grid" style="">
+        <div id="firstGroup" class="firstGroup">
+          <div class="item">
+            <a href="https://nepalhomes.com/" target="_blank" style="width: 100%; display: block; min-height: 80px; height: 100%; display: flex; justify-content: center; align-items: center; background: #efeff4">
+              <img style="max-height: 50px; margin: 10px" src="./Hot Properties_files/B86FD57602568C0-nepal-home-logo.png" alt="NepalHomes.com" />
+            </a>
+          </div>
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/house-on-urgent-sale-at-pasikot-budhanilkantha">
+                  <img class="image" src="./Hot Properties_files/37ECE041E386DC4-274871622_380737913502583_8274241481579553777_n.jpg" alt="House on urgent sale at Pasikot, Budhanilkantha" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/house-on-urgent-sale-at-pasikot-budhanilkantha">House on urgent sale at Pasikot, Budhanilkantha</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.33,000,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/attractive-house-for-sale-in-duwakot-bhaktpur">
+                  <img class="image" src="./Hot Properties_files/B65B3EFC62463D5-viber_image_2022-02-28_12-22-35-794.jpg" alt="Attractive house for sale in Duwakot, Bhaktpur" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/attractive-house-for-sale-in-duwakot-bhaktpur">Attractive house for sale in Duwakot, Bhaktpur</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.21,500,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="secondGroup" class="secondGroup">
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/modern-house-for-sale-inside-manjushree-colony-bhaisepati">
+                  <img class="image" src="./Hot Properties_files/E80B58A635E2FCB-89e1f5dc-2f88-424f-bd99-3d625016eb8f.jpg" alt="Modern house for sale inside Manjushree Colony, Bhaisepati" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/modern-house-for-sale-inside-manjushree-colony-bhaisepati">Modern house for sale inside Manjushree Colony, Bhaisepati</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.25,000,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/booking-open-for-luxurious-house-at-madhuban-homes-budhanilkantha">
+                  <img class="image" src="./Hot Properties_files/08A80A717A94C7A-IuGwyAWQlKLRLksbGj6I.png" alt="Booking open for luxurious house at Madhuban Homes, Budhanilkantha" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/booking-open-for-luxurious-house-at-madhuban-homes-budhanilkantha">Booking open for luxurious house at Madhuban Homes, Budhanilkantha</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.41,500,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/residential-house-for-sale-near-akasedhara-petrol-pump-ekatabasti">
+                  <img class="image" src="./Hot Properties_files/73353B89181929C-0-02-03-15b5f972e00a086889ad1b94200b1e9b2f99a50c0a80a9a371956f831bc2e5a8_c751800cc032a167.jpg" alt="Residential house for sale near Akasedhara Petrol Pump, Ekatabasti" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/residential-house-for-sale-near-akasedhara-petrol-pump-ekatabasti">Residential house for sale near Akasedhara Petrol Pump, Ekatabasti</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.16,000,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="thirdGroup" class="thirdGroup">
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/limited-luxurious-houses-are-available-at-downtown-residency-dhapakhel">
+                  <img class="image" src="./Hot Properties_files/71D741FCC2243FC-A2.jpg" alt="Limited Luxurious Houses are available at Downtown Residency, Dhapakhel" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/limited-luxurious-houses-are-available-at-downtown-residency-dhapakhel">Limited Luxurious Houses are available at Downtown Residency, Dhapakhel</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.33,500,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/attractive-house-on-sale-at-imadol">
+                  <img class="image" src="./Hot Properties_files/B17FDA25981A71C-272834777_3504158566477692_1346246109619828359_n.jpg" alt="Attractive house on sale at Imadol" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/attractive-house-on-sale-at-imadol">Attractive house on sale at Imadol</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.30,000,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Total Amount</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="height: 100%; background-color: #f5f5fa">
+              <div style="position: relative; display: block; overflow: hidden; height: 152px">
+                <a target="_blank" href="https://www.nepalhomes.com/detail/beautiful-land-for-sale-in-dhulikhel">
+                  <img class="image" src="./Hot Properties_files/AB8EC0541204115-272882458_684519282927340_2944814108738681235_n.jpg" alt="Beautiful land for sale in Dhulikhel" />
+                </a>
+              </div>
+              <div style="padding: 10px">
+                <h3 class="heading">
+                  <a target="_blank" href="https://www.nepalhomes.com/detail/beautiful-land-for-sale-in-dhulikhel">Beautiful land for sale in Dhulikhel</a>
+                </h3>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 4px">Rs.1,800,000</p>
+                <p style="font-size: 12px; color: #777; margin-top: 4px">Per Aana</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

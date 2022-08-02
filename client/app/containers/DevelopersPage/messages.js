@@ -1,0 +1,16 @@
+/*
+ * DevelopersPage Messages
+ *
+ * This contains all the text for the DevelopersPage container.
+ */
+
+import { defineMessages } from 'react-intl';
+
+export const scope = 'app.containers.DevelopersPage';
+
+export default defineMessages({
+  header: {
+    id: `${scope}.header`,
+    defaultMessage: 'This is the DevelopersPage container!',
+  },
+});

@@ -1,0 +1,250 @@
+/* main menu */
+
+.menu {
+  position: relative;
+  display: block;
+}
+
+.menu-child {
+  width: 210px;
+  background: white;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  margin-top: 0px;
+  padding: 10px 0px;
+  z-index: 9999;
+  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.255);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.255);
+  transition: all linear 0.2s;
+}
+
+.menu-child > li > a,
+.menu-child li > ul > li > a {
+  display: block;
+  padding: 5px 10px;
+  width: 100%;
+  color: #000;
+  text-align: left;
+  font-size: 13px;
+}
+
+.nav a .menu-child a.active {
+  color: #000;
+}
+
+.menu-child li a:hover,
+.nav a .menu-child a.active:hover {
+  color: #0291DD;
+}
+
+.menu:hover .menu-child {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-child li > ul {
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  width: 210px;
+  background: white;
+  visibility: hidden;
+  opacity: 0;
+  padding: 10px 0px;
+  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.255);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.255);
+  transition: all linear 0.2s;
+  z-index: 9;
+}
+
+.menu-child li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  height: 100%;
+  display: inline-table;
+}
+
+.menu.active {
+  color: #0291DD;
+}
+
+.nav-bar .nav > div:last-child {
+  margin-right: 0;
+}
+
+/* category menu */
+
+.categories .nav-bar > div > div {
+  width: 100%;
+  margin-right: 0;
+}
+
+.categories .nav-bar > div > div > span {
+  height: 2.5rem;
+  text-align: left;
+  display: flex;
+  color: #fff;
+  padding-left: 15px;
+  justify-items: center;
+}
+
+.categories .nav-bar > div > div > span:after {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  font-family: 'Material Icons';
+  font-size: 28px;
+  color: #fff;
+  content: 'arrow_drop_down';
+  text-transform: none;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+}
+
+.categories:hover .nav-bar > div > div > a:after {
+  content: 'arrow_drop_up';
+}
+
+.categories .nav-bar > div > div .menu-child {
+  width: 100%;
+}
+
+@media screen and (max-width: 1023px) {
+  .categories,
+  .cartIcons {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .nav .active {
+    color: #ffffff;
+  }
+
+  .nav {
+    display: none;
+    position: relative;
+    background: #0291DD;
+    padding: 10px;
+  }
+
+  .ham,
+  .hamIcon {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+  }
+
+  .hamIcon {
+    opacity: 1;
+    z-index: -1;
+  }
+  .ham:checked ~ .nav {
+    display: block;
+  }
+
+  .block-mobile {
+    display: block !important;
+    text-align: right;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .icon {
+    display: inline-block;
+    fill: #000000;
+    height: 1em;
+    width: 1em;
+    vertical-align: middle;
+    top: -0.0625em;
+    cursor: pointer;
+  }
+
+  /* Menu toggle styles. */
+
+  .icon-menu-toggle {
+    width: 25px;
+    height: 25px;
+    top: 50px;
+  }
+
+  /* Animate menu icon (lines). */
+  .svg-menu-toggle .line {
+    opacity: 1;
+    transform: rotate(0) translateY(0) translateX(0);
+    transform-origin: 1em 1em;
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+  }
+  .svg-menu-toggle .line-1 {
+    transform-origin: 1em 2.5em;
+  }
+  .svg-menu-toggle .line-3 {
+    transform-origin: 1em 4.5em;
+  }
+
+  .menu-toggle.opened .svg-menu-toggle .line-1 {
+    transform: rotate(45deg) translateY(0) translateX(0);
+  }
+  .menu-toggle.opened .svg-menu-toggle .line-2 {
+    opacity: 0;
+  }
+  .menu-toggle.opened .svg-menu-toggle .line-3 {
+    transform: rotate(-45deg) translateY(0em) translateX(0em);
+  }
+
+  .mcart {
+    display: none;
+  }
+
+  .fscont > div .fslink:after,
+  .menu-child {
+    display: none;
+  }
+
+  .fscont:hover > div a .hover-img {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    padding: 0px;
+  }
+
+  .drawerNav .nav-bar .nav {
+    display: block;
+    background: #fff;
+    padding: 0px;
+  }
+
+  .drawerNav .nav-bar .nav > div {
+    color: #000000;
+    border-bottom: 1px dashed #eeeeee;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+  }
+
+  .drawerNav .nav-bar .nav > div:hover {
+    background-color: transparent;
+    color: #000000;
+  }
+
+  .drawerNav .nav-bar .nav > div > ul {
+    display: block;
+    width: auto;
+    position: static;
+    margin-top: 0px;
+    padding: 5px 0px;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+  }
+
+  .drawerNav .nav-bar .nav > div > ul li a:hover {
+    background: transparent;
+  }
+}
