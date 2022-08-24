@@ -326,43 +326,49 @@ blogController.GetRssFeedXML = async (req, res, next) => {
       .skip(0)
       .limit(10);
 
-    var example1 = [{
-      rss: [{ _attr: { "xmlns:atom": "http://www.w3.org/2005/Atom", "xmlns:dc": "http://purl.org/dc/elements/1.1/", version: "2.0" } }, {
-        channel: [
+    var example1 = [
+      {
+        rss: [
+          { _attr: { 'xmlns:atom': 'http://www.w3.org/2005/Atom', 'xmlns:dc': 'http://purl.org/dc/elements/1.1/', version: '2.0' } },
           {
-            language: "en-us",
-          }, {
-            title: "NepalHomes"
-          }, {
-            "atom:link": { _attr: { href: "https://www.nepalhomes.com/api/blog/feed", rel: "self", type: "application/rss+xml" } }
+            channel: [
+              {
+                language: 'en-us',
+              },
+              {
+                title: 'NepalHomes',
+              },
+              {
+                'atom:link': { _attr: { href: 'https://www.nepalhomes.com/api/blog/feed', rel: 'self', type: 'application/rss+xml' } },
+              },
+              {
+                link: 'https://www.nepalhomes.com',
+              },
+              { description: 'NepalHomes is a platform for real estate agents to advertise their properties and services. NepalHomes is a platform for real estate agents to advertise their properties and services.' },
+              {
+                image: [
+                  {
+                    url: 'https://www.nepalhomes.com/b4e31aed2fd0cb8a886317814aafb72d.svg',
+                  },
+                  {
+                    title: 'NepalHomes',
+                  },
+                  {
+                    link: 'https://www.nepalhomes.com',
+                  },
+                ],
+              },
+            ],
           },
-          {
-            link: "https://www.nepalhomes.com"
-          },
-          { description: "NepalHomes is a platform for real estate agents to advertise their properties and services. NepalHomes is a platform for real estate agents to advertise their properties and services." },
-          {
-            image: [{
-              url: 'https://www.nepalhomes.com/b4e31aed2fd0cb8a886317814aafb72d.svg'
-            }, {
-              title: 'NepalHomes'
-            }, {
-              link: 'https://www.nepalhomes.com',
-            }]
-          }
-        ]
-      }]
-    }];
+        ],
+      },
+    ];
     for (let i = 0; i < data.length; i++) {
-      example1[0].rss[1].channel[(6 + i)] = {
-        item: [
-          { title: data[i].title },
-          { link: `https://www.nepalhomes.com/api/blog/html/${data[i]._id}` },
-          { description: data[i].short_description },
-          { pubDate: data[i].added_at.toUTCString() },
-        ]
+      example1[0].rss[1].channel[6 + i] = {
+        item: [{ title: data[i].title }, { link: `https://www.nepalhomes.com/api/blog/html/${data[i]._id}` }, { description: data[i].short_description }, { pubDate: data[i].added_at.toUTCString() }],
       };
     }
-    res.setHeader("Content-Type", "application/xml;charset=UTF-8");
+    res.setHeader('Content-Type', 'application/xml;charset=UTF-8');
     return res.send(`<?xml version="1.0" encoding="UTF-8"?>
     ${XML(example1)}`);
   } catch (err) {
@@ -567,7 +573,7 @@ blogController.GetBlogDetail = async (req, res, next) => {
 };
 blogController.GetBlogBySlug = async (req, res, next) => {
   const slug = req.params.slug_url;
-  const user_id = req.user && req.user.id || '';
+  const user_id = (req.user && req.user.id) || '';
   const current_date = new Date();
   let filter = { is_deleted: false };
   // if (user_id) {
@@ -588,9 +594,13 @@ blogController.GetBlogBySlug = async (req, res, next) => {
       { path: 'author', select: '_id name avatar image bio author.bio social_link' },
       { path: 'category', select: '_id title slug_url' },
     ]);
+
   if (!blogs) {
     return otherHelper.sendResponse(res, httpStatus.OK, false, blogs, 'no blog found', 'no blog found', null);
   }
+  //update view counter
+  const blogId = blogs?._id;
+  if (!!blogId) await blogSch.findByIdAndUpdate({ _id: blogId }, { $inc: { view_count: 1 } });
   return otherHelper.sendResponse(res, httpStatus.OK, true, blogs, null, blogConfig.get, null);
 };
 
@@ -613,7 +623,9 @@ blogController.GetBlogByIdHtml = async (req, res, next) => {
       _id: id,
       is_deleted: false,
     });
-    const html = `<!doctype html><html lang="en"><head><meta property="og:image:secure_url" content="https://www.nepalhomes.com/public/blog/7195C420F8A287F-Land-plating.jpg" data-react-helmet="true"/><meta property="og:url" content="https://www.nepalhomes.com/blog/612da3853490f00e68dbae3a" data-react-helmet="true"/><link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet"><meta name="robots" content="index, follow"><meta property="og:type" content="website" data-react-helmet="true"/><meta property="fb:app_id" content="261077198152655" data-react-helmet="true"/><meta name="apple-mobile-web-app-title" content="Nepal Homes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="theme-color" content="#FFFFFF"/></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMX498K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><noscript>If you're seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>, please <strong>enable JS</strong> to make this app work.</noscript><span class="news-big-title">${blogs.title}</span>
+    const html = `<!doctype html><html lang="en"><head><meta property="og:image:secure_url" content="https://www.nepalhomes.com/public/blog/7195C420F8A287F-Land-plating.jpg" data-react-helmet="true"/><meta property="og:url" content="https://www.nepalhomes.com/blog/612da3853490f00e68dbae3a" data-react-helmet="true"/><link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet"><meta name="robots" content="index, follow"><meta property="og:type" content="website" data-react-helmet="true"/><meta property="fb:app_id" content="261077198152655" data-react-helmet="true"/><meta name="apple-mobile-web-app-title" content="Nepal Homes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="theme-color" content="#FFFFFF"/></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMX498K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><noscript>If you're seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>, please <strong>enable JS</strong> to make this app work.</noscript><span class="news-big-title">${
+      blogs.title
+    }</span>
     <div class="row sif-images sif-videos">
                 <div class="featured-images col-md-12" id="featured-images">
                     

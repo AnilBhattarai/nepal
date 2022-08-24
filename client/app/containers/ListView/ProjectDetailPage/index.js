@@ -436,6 +436,10 @@ export const ProjectDetailPage = props => {
         })
       : {};
 
+  const totalViewCount = one.view_count_guest
+    ? Number(one.view_count_guest) + Number(one.view_count_user)
+    : 0;
+
   return !loading && one.msg && one.msg === 'product not found' ? (
     <NotFoundPage />
   ) : (
@@ -448,10 +452,10 @@ export const ProjectDetailPage = props => {
           {loading ? (
             <div className="">
               <div className="lg:flex">
-                <div className="mb-2 flex-1 overflow-hidden">
+                <div className="flex-1 mb-2 overflow-hidden">
                   <Skeleton width={1000} height={480} />
                 </div>
-                <div className="hidden lg:block w-32 mb-2 flex justify-between">
+                <div className="flex justify-between hidden w-32 mb-2 lg:block">
                   <Skeleton width={92} height={60} />
                   <Skeleton width={92} height={60} />
                   <Skeleton width={92} height={60} />
@@ -493,7 +497,7 @@ export const ProjectDetailPage = props => {
                   </div>
 
                   <div className="mt-10">
-                    <h1 className="text-2xl md:text-4xl flex tracking-tighter pt-4">
+                    <h1 className="flex pt-4 text-2xl tracking-tighter md:text-4xl">
                       {one.basic.title ? one.basic.title : 'Title'}{' '}
                     </h1>
                     <p>
@@ -505,23 +509,37 @@ export const ProjectDetailPage = props => {
                         ? one.address.city_id.name
                         : ''}
                     </p>
-                    <p className="text-sm text-gray-700">
-                      {!one.is_project
-                        ? `${one.prefix}${one.property_id}`
-                        : `${one.prefix}${one.project_id}`}
-                    </p>
+                    <div style={{ display: 'flex' }}>
+                      <p className="text-sm text-gray-700">
+                        {!one.is_project
+                          ? `${one.prefix}${one.property_id}`
+                          : `${one.prefix}${one.project_id}`}
+                      </p>
+                      {totalViewCount > 0 ? (
+                        <div className="inline-flex items-center pl-6">
+                          <i className="hidden material-icons opacity-60 lg:block">
+                            visibility
+                          </i>
+                          <span className="pl-1 text-xs opacity-60">
+                            {totalViewCount}
+                          </span>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
 
                     <div className="flex items-center">
                       {/* {one.is_exclusive && (
-                    <span className="text-sm text-white relative inline-block bg-red-600 rounded mr-6">
+                    <span className="relative inline-block mr-6 text-sm text-white bg-red-600 rounded">
                       <i className="">
                         Exclusive Project
                  </span>
                       )} */}
                       {/* {one.is_featured && (
-                        <span className="text-sm text-white relative inline-block tag tag-lg mr-6">
+                        <span className="relative inline-block mr-6 text-sm text-white tag tag-lg">
                           <img
-                            className="float-left mr-2 mt-1"
+                            className="float-left mt-1 mr-2"
                             src={premiumimg}
                             alt="featured"
                           />
@@ -530,9 +548,9 @@ export const ProjectDetailPage = props => {
                       )}
 
                       {one.is_premium && (
-                        <span className="text-sm text-white relative inline-block tag tag-lg bg-primary mr-10">
+                        <span className="relative inline-block mr-10 text-sm text-white tag tag-lg bg-primary">
                           <img
-                            className="float-left mr-2 mt-1"
+                            className="float-left mt-1 mr-2"
                             src={featuredimg}
                             alt="premium"
                           />
@@ -545,17 +563,17 @@ export const ProjectDetailPage = props => {
                     <div className="lg:flex">
                       <div className="lg:w-3/4">
                         <Element name="overview">
-                          {/* <p className="text-sm opacity-5 mt-2">
+                          {/* <p className="mt-2 text-sm opacity-5">
                         Posted on {moment(one.added_at).format(DATE_FORMAT)}
                       </p> */}
 
-                          <div className="mt-4 rounded bg-white" id="overview">
+                          <div className="mt-4 bg-white rounded" id="overview">
                             <div className="flex flex-wrap py-4">
                               {one.location_property &&
                                 one.location_property.total_area && (
-                                  <div className="inline-flex w-full md:w-1/4 rounded mb-4">
-                                    <div className="flex1 pl-4">
-                                      <span className="uppercase text-sm block">
+                                  <div className="inline-flex w-full mb-4 rounded md:w-1/4">
+                                    <div className="pl-4 flex1">
+                                      <span className="block text-sm uppercase">
                                         Area Covered
                                       </span>
                                       <span className="font-bold">
@@ -572,12 +590,12 @@ export const ProjectDetailPage = props => {
                                 )}
                               {one.location_property &&
                                 one.location_property.built_area && (
-                                  <div className="inline-flex w-full md:w-1/4 rounded mb-4">
-                                    {/* <div className="w-10 h-10 flex items-center justify-center">
+                                  <div className="inline-flex w-full mb-4 rounded md:w-1/4">
+                                    {/* <div className="flex items-center justify-center w-10 h-10">
                                       <img src={pillar} alt="Area Covered" />
                                     </div> */}
-                                    <div className="flex1 pl-4">
-                                      <span className="uppercase text-sm block">
+                                    <div className="pl-4 flex1">
+                                      <span className="block text-sm uppercase">
                                         Built-up Area
                                       </span>
                                       <span className="font-bold">
@@ -596,12 +614,12 @@ export const ProjectDetailPage = props => {
                                 one.basic.property_category.title !== 'Land' &&
                                 one.building &&
                                 one.building.built_year && (
-                                  <div className="inline-flex w-full md:w-1/4 rounded mb-4">
-                                    {/* <div className="w-10 h-10 flex items-center justify-center">
+                                  <div className="inline-flex w-full mb-4 rounded md:w-1/4">
+                                    {/* <div className="flex items-center justify-center w-10 h-10">
                                       <img src={calendar} alt="Area Covered" />
                                     </div> */}
-                                    <div className="flex1 pl-4">
-                                      <span className="uppercase text-sm block">
+                                    <div className="pl-4 flex1">
+                                      <span className="block text-sm uppercase">
                                         Built Year
                                       </span>
                                       <span className="font-bold">
@@ -615,12 +633,12 @@ export const ProjectDetailPage = props => {
                               {one.location_property &&
                                 one.location_property.road_access_value ===
                                   0 && (
-                                  <div className="inline-flex w-full md:w-1/4 rounded mb-4">
-                                    {/* <div className="w-10 h-10 flex items-center justify-center">
+                                  <div className="inline-flex w-full mb-4 rounded md:w-1/4">
+                                    {/* <div className="flex items-center justify-center w-10 h-10">
                                       <img src={road} alt="Area Covered" />
                                     </div> */}
-                                    <div className="flex1 pl-4">
-                                      <span className="uppercase text-sm block">
+                                    <div className="pl-4 flex1">
+                                      <span className="block text-sm uppercase">
                                         Road Access
                                       </span>
                                       <span className="font-bold">
@@ -646,9 +664,9 @@ export const ProjectDetailPage = props => {
                                   </div>
                                 )}
 
-                              <div className="inline-flex w-full md:w-1/4 rounded mb-4">
-                                <div className="flex1 pl-4">
-                                  <span className="uppercase text-sm block">
+                              <div className="inline-flex w-full mb-4 rounded md:w-1/4">
+                                <div className="pl-4 flex1">
+                                  <span className="block text-sm uppercase">
                                     Project Status
                                   </span>
                                   <p className="font-bold">
@@ -686,14 +704,14 @@ export const ProjectDetailPage = props => {
 
                         {one.is_project && (
                           <>
-                            <h2 className="font-bold  mb-6 text-2xl mt-12">
+                            <h2 className="mt-12 mb-6 text-2xl font-bold">
                               Amenities
                             </h2>
-                            <div className="flex p-4 flex-wrap -mx-2 md:-mx-4">
+                            <div className="flex flex-wrap p-4 -mx-2 md:-mx-4">
                               {one.building.amenities
                                 ? one.building.amenities.map(each => (
                                     <div
-                                      className="w-1/3 md:w-1/5 text-center px-1 md:px-4 my-4 flex items-center"
+                                      className="flex items-center w-1/3 px-1 my-4 text-center md:w-1/5 md:px-4"
                                       key={`amenities-${each.title}`}
                                     >
                                       <div className="w-6 h-6 text-center">
@@ -713,7 +731,7 @@ export const ProjectDetailPage = props => {
                                         />
                                       </div>
 
-                                      <p className="text-sm opacity-75 text-left pl-2 md:pl-4 flex-1">
+                                      <p className="flex-1 pl-2 text-sm text-left opacity-75 md:pl-4">
                                         {each.title}
                                       </p>
                                     </div>
@@ -725,17 +743,17 @@ export const ProjectDetailPage = props => {
                               {one.project_features &&
                                 one.project_features.length > 0 && (
                                   <div
-                                    className="rounded mt-4 bg-white"
+                                    className="mt-4 bg-white rounded"
                                     id="features"
                                   >
-                                    <h2 className="font-bold  mb-6 text-2xl mt-12">
+                                    <h2 className="mt-12 mb-6 text-2xl font-bold">
                                       Project Features
                                     </h2>
 
                                     {/* {one.basic &&
                                       one.basic.property_category.title !==
                                         'Land' && (
-                                        <div className="flex p-4 flex-wrap -mx-2 md:-mx-4">
+                                        <div className="flex flex-wrap p-4 -mx-2 md:-mx-4">
                                          
                                         </div>
                                       )} */}
@@ -746,10 +764,10 @@ export const ProjectDetailPage = props => {
                                         className="flex items-center px-4 py-2"
                                       >
                                         <span
-                                          className="border border-gray-400 w-4 h-4 inline-block rounded inline-flex items-center justify-center mr-2"
+                                          className="inline-flex items-center justify-center inline-block w-4 h-4 mr-2 border border-gray-400 rounded"
                                           style={{ lineHeight: 0 }}
                                         >
-                                          <i className="material-icons text-xs text-gray-400 mt-px">
+                                          <i className="mt-px text-xs text-gray-400 material-icons">
                                             check
                                           </i>
                                         </span>
@@ -773,12 +791,12 @@ export const ProjectDetailPage = props => {
                             {one.project_property_type &&
                               one.project_property_type.length > 0 && (
                                 <Element name="types">
-                                  <div className="rounded mt-4 bg-white">
-                                    <h2 className="text-lg md:text-2xl md:tracking-tighter py-2 px-4">
+                                  <div className="mt-4 bg-white rounded">
+                                    <h2 className="px-4 py-2 text-lg md:text-2xl md:tracking-tighter">
                                       Property Types
                                     </h2>
 
-                                    <div className="flex px-6 border-b border-gray-300 mb-4">
+                                    <div className="flex px-6 mb-4 border-b border-gray-300">
                                       {one.project_property_type.map(
                                         (x, index) => (
                                           <button
@@ -839,24 +857,24 @@ export const ProjectDetailPage = props => {
                                         }`}
                                         className="flex pl-5"
                                       >
-                                        {/* <div className="border border-gray-200 mr-5 w-16 h-16 rounded-full inline-block bg-gray-100 text-center flex items-center justify-center text-2xl text-gray-500">
+                                        {/* <div className="flex items-center justify-center inline-block w-16 h-16 mr-5 text-2xl text-center text-gray-500 bg-gray-100 border border-gray-200 rounded-full">
                                       {propertyTab + 1}
                                     </div> */}
                                         <div className="flex-1">
-                                          {/* <h3 className="font-bold text-lg">
+                                          {/* <h3 className="text-lg font-bold">
                                         {
                                           one.project_property_type[propertyTab]
                                             .type
                                         }
                                       </h3> */}
-                                          <div className="md:flex pt-4">
+                                          <div className="pt-4 md:flex">
                                             {one.project_property_type[
                                               propertyTab
                                             ].area && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img src={tape} />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Total Area:
                                                   </p>
                                                   {
@@ -880,13 +898,13 @@ export const ProjectDetailPage = props => {
                                             {one.project_property_type[
                                               propertyTab
                                             ].price && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img
-                                                  className="opacity-50 h-6"
+                                                  className="h-6 opacity-50"
                                                   src={rs}
                                                 />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Price:
                                                   </p>
                                                   Rs.
@@ -903,14 +921,14 @@ export const ProjectDetailPage = props => {
                                             {one.project_property_type[
                                               propertyTab
                                             ].floor_no && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img
-                                                  className="opacity-50 h-6"
+                                                  className="h-6 opacity-50"
                                                   src={ladder}
                                                   alt="floor"
                                                 />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Floor no
                                                   </p>
                                                   {one.project_property_type[
@@ -919,26 +937,26 @@ export const ProjectDetailPage = props => {
                                                 </p>
                                               </div>
                                             )}
-                                            {/* <div className="flex items-center mr-12 mb-6">
+                                            {/* <div className="flex items-center mb-6 mr-12">
                                               <img
                                                 className="h-8"
                                                 src={compass}
                                               />
-                                              <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                              <p className="pl-5 text-xl leading-none text-gray-600">
+                                                <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                   Facing
                                                 </p>
                                                 East
                                               </p>
                                             </div> */}
 
-                                            {/* <div className="flex items-center mr-12 mb-6">
+                                            {/* <div className="flex items-center mb-6 mr-12">
                                           <img
-                                            className="opacity-50 h-6"
+                                            className="h-6 opacity-50"
                                             src={rs}
                                           />
-                                          <p className="text-xl text-gray-600 pl-5 leading-none">
-                                            <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                          <p className="pl-5 text-xl leading-none text-gray-600">
+                                            <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                               Total Unit:
                                           </p>
                                             {one.project_property_type[
@@ -947,13 +965,13 @@ export const ProjectDetailPage = props => {
                                           </p>
                                         </div>
 
-                                        <div className="flex items-center mr-12 mb-6">
+                                        <div className="flex items-center mb-6 mr-12">
                                           <img
-                                            className="opacity-50 h-6"
+                                            className="h-6 opacity-50"
                                             src={rs}
                                           />
-                                          <p className="text-xl text-gray-600 pl-5 leading-none">
-                                            <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                          <p className="pl-5 text-xl leading-none text-gray-600">
+                                            <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                               Available Unit:
                                           </p>
                                             {one.project_property_type[
@@ -963,14 +981,14 @@ export const ProjectDetailPage = props => {
                                         </div> */}
                                           </div>
 
-                                          <div className="md:flex pt-4">
+                                          <div className="pt-4 md:flex">
                                             {one.project_property_type[
                                               propertyTab
                                             ].bathroom && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img src={shower} />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Bathroom:
                                                   </p>
                                                   {one.project_property_type[
@@ -982,13 +1000,13 @@ export const ProjectDetailPage = props => {
                                             {one.project_property_type[
                                               propertyTab
                                             ].bedroom && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img
                                                   className="h-6"
                                                   src={bed}
                                                 />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Bedroom:
                                                   </p>
 
@@ -1001,13 +1019,13 @@ export const ProjectDetailPage = props => {
                                             {one.project_property_type[
                                               propertyTab
                                             ].kitchen && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img
                                                   className="h-6"
                                                   src={kitchen}
                                                 />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Kitchen:
                                                   </p>
                                                   {one.project_property_type[
@@ -1017,13 +1035,13 @@ export const ProjectDetailPage = props => {
                                               </div>
                                             )}
 
-                                            {/* <div className="flex items-center mr-12 mb-6">
+                                            {/* <div className="flex items-center mb-6 mr-12">
                                           <img
-                                            className="opacity-50 h-6"
+                                            className="h-6 opacity-50"
                                             src={shower}
                                           />
-                                          <p className="text-xl text-gray-600 pl-5 leading-none">
-                                            <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                          <p className="pl-5 text-xl leading-none text-gray-600">
+                                            <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                               Puja Room:
                                           </p>
                                             {one.project_property_type[
@@ -1034,13 +1052,13 @@ export const ProjectDetailPage = props => {
                                             {one.project_property_type[
                                               propertyTab
                                             ].living_room && (
-                                              <div className="flex items-center mr-12 mb-6">
+                                              <div className="flex items-center mb-6 mr-12">
                                                 <img
                                                   className="h-6"
                                                   src={sofa}
                                                 />
-                                                <p className="text-xl text-gray-600 pl-5 leading-none">
-                                                  <p className="uppercase text-xs tracking-widest pb-1 text-black">
+                                                <p className="pl-5 text-xl leading-none text-gray-600">
+                                                  <p className="pb-1 text-xs tracking-widest text-black uppercase">
                                                     Living Room:
                                                   </p>
                                                   {one.project_property_type[
@@ -1060,11 +1078,11 @@ export const ProjectDetailPage = props => {
                                               one.project_property_type[
                                                 propertyTab
                                               ].floor_plan.map(plan => (
-                                                <div className="md:w-1/3 px-4">
-                                                  <span className="text-lg font-bold mb-2">
+                                                <div className="px-4 md:w-1/3">
+                                                  <span className="mb-2 text-lg font-bold">
                                                     {plan.floor_name}
                                                   </span>
-                                                  <div className="p-px border cursor-pointer my-1">
+                                                  <div className="p-px my-1 border cursor-pointer">
                                                     {plan.image &&
                                                       plan.image[0] && (
                                                         <img
@@ -1085,8 +1103,8 @@ export const ProjectDetailPage = props => {
                                                           {plan.feature_list.map(
                                                             ft_list => (
                                                               <li>
-                                                                <span className="border border-gray-400 w-4 h-4 rounded inline-flex items-center justify-center mr-2">
-                                                                  <i className="material-icons text-xs text-gray-400 mt-px">
+                                                                <span className="inline-flex items-center justify-center w-4 h-4 mr-2 border border-gray-400 rounded">
+                                                                  <i className="mt-px text-xs text-gray-400 material-icons">
                                                                     check
                                                                   </i>
                                                                 </span>
@@ -1117,7 +1135,7 @@ export const ProjectDetailPage = props => {
                                       .image &&
                                       one.project_property_type[propertyTab]
                                         .image.length > 0 && (
-                                        <div className="md:flex pt-4">
+                                        <div className="pt-4 md:flex">
                                           {one.project_property_type[
                                             propertyTab
                                           ].image.map(img => (
@@ -1147,10 +1165,10 @@ export const ProjectDetailPage = props => {
                             {/* {one.project_floor_plan &&
                           one.project_floor_plan.length > 0 && (
                             <div
-                              className="rounded mt-4 bg-white"
+                              className="mt-4 bg-white rounded"
                               id="floor"
                             >
-                              <h2 className="font-bold  mb-6 text-2xl mt-12">
+                              <h2 className="mt-12 mb-6 text-2xl font-bold">
                                 Floor Plans
                               </h2>
                                 <div className="p-4 hideMainImage">
@@ -1170,9 +1188,9 @@ export const ProjectDetailPage = props => {
                               one.project_payment_plan.length > 0 && (
                                 <div
                                   id="payment"
-                                  className="rounded mt-4 bg-white"
+                                  className="mt-4 bg-white rounded"
                                 >
-                                  <h2 className="font-bold  mb-6 text-2xl mt-12">
+                                  <h2 className="mt-12 mb-6 text-2xl font-bold">
                                     Payment Plans
                                   </h2>
                                   <div className="hideMainImage">
@@ -1188,10 +1206,8 @@ export const ProjectDetailPage = props => {
                               )}
                           </>
                         )}
-                        <div id="map" className="rounded mt-4 bg-white">
-                          <h2 className="font-bold  mb-6 text-2xl mt-12">
-                            Map
-                          </h2>
+                        <div id="map" className="mt-4 bg-white rounded">
+                          <h2 className="mt-12 mb-6 text-2xl font-bold">Map</h2>
                           <div
                             className="relative overflow-hidden"
                             style={{ paddingTop: '56%' }}
@@ -1200,7 +1216,7 @@ export const ProjectDetailPage = props => {
                               title="map"
                               src={one.map_src ? one.map_src : ''}
                               frameBorder="0"
-                              className="absolute left-0 top-0 border-0 w-full h-full"
+                              className="absolute top-0 left-0 w-full h-full border-0"
                               allowFullScreen
                             />
                           </div>
@@ -1208,13 +1224,13 @@ export const ProjectDetailPage = props => {
                         {one.is_project ? (
                           <>
                             <div
-                              className="rounded mt-4 bg-white"
+                              className="mt-4 bg-white rounded"
                               id="developer"
                             >
-                              <h2 className="font-bold  mb-6 text-2xl mt-12">
+                              <h2 className="mt-12 mb-6 text-2xl font-bold">
                                 Developer
                               </h2>
-                              <div className="p-4 flex">
+                              <div className="flex p-4">
                                 <Link
                                   target="_blank"
                                   className="block"
@@ -1235,7 +1251,7 @@ export const ProjectDetailPage = props => {
                                 <div className="flex-1 pl-4">
                                   <Link
                                     target="_blank"
-                                    className="text-blue no-underline my-2"
+                                    className="my-2 no-underline text-blue"
                                     to={`/developer/&developer_id=${
                                       one.developer_id._id
                                     }`}
@@ -1256,7 +1272,7 @@ export const ProjectDetailPage = props => {
 
                               {one.developer_id.bio && (
                                 <div
-                                  className="text-gray-600 p-4"
+                                  className="p-4 text-gray-600"
                                   dangerouslySetInnerHTML={{
                                     __html: one.developer_id.bio,
                                   }}
@@ -1283,7 +1299,7 @@ export const ProjectDetailPage = props => {
                                   {one.agency_id.title}
                                 </p>
                                 <Link
-                                  className="text-blue no-underline my-2"
+                                  className="my-2 no-underline text-blue"
                                   to="#"
                                 >
                                   {one.agency_id.description}
@@ -1310,7 +1326,7 @@ export const ProjectDetailPage = props => {
                                   {one.agency_id.name}
                                 </p>
                                 <Link
-                                  className="text-blue no-underline my-2"
+                                  className="my-2 no-underline text-blue"
                                   to="#"
                                 >
                                   {one.agency_id.description}
@@ -1335,7 +1351,7 @@ export const ProjectDetailPage = props => {
                                     {one.added_by.name}
                                   </p>
                                   <Link
-                                    className="text-blue no-underline my-2"
+                                    className="my-2 no-underline text-blue"
                                     to="#"
                                   >
                                     {one.added_by.bio}
@@ -1346,10 +1362,10 @@ export const ProjectDetailPage = props => {
                           )
                         )}
 
-                        <div className="bg-white rounded shadow p-4 flex items-center mt-4 hidden">
+                        <div className="flex items-center hidden p-4 mt-4 bg-white rounded shadow">
                           <img src={calc} alt="calculator" className="h-32" />
                           <div className="flex-1 px-8">
-                            <h3 className="text-2xl md:text-3xl text-black tracking-tight">
+                            <h3 className="text-2xl tracking-tight text-black md:text-3xl">
                               How much can you take loan?
                             </h3>
                             <p className="text-gray-600">
@@ -1361,7 +1377,7 @@ export const ProjectDetailPage = props => {
                           <div className="w-40 text-center">
                             <div className="flex justify-center">
                               <img alt="arrow" src={arrow} />
-                              <span className="italic pl-2 text-gray-500 text-sm">
+                              <span className="pl-2 text-sm italic text-gray-500">
                                 it’s free
                               </span>
                             </div>
@@ -1369,7 +1385,7 @@ export const ProjectDetailPage = props => {
                               style={{
                                 boxShadow: '0 15px 30px 0 rgba(2,145,221,0.33)',
                               }}
-                              className="block p-3 text-white bg-secondary  rounded-full"
+                              className="block p-3 text-white rounded-full bg-secondary"
                             >
                               Calculate Loan
                             </span>
@@ -1378,7 +1394,7 @@ export const ProjectDetailPage = props => {
 
                         <div className="flex items-center mt-4 mb-12">
                           <button
-                            className="underline text-right text-red-500 text-sm cursor-pointer mt-1 block"
+                            className="block mt-1 text-sm text-right text-red-500 underline cursor-pointer"
                             type="button"
                             onClick={showFeedbackModal}
                           >
@@ -1405,25 +1421,25 @@ export const ProjectDetailPage = props => {
                               </span>
                             )} */}
                             </h2>
-                            <div className="md:flex flex-wrap -mx-2 mt-4">
+                            <div className="flex-wrap mt-4 -mx-2 md:flex">
                               {related.map(each => (
                                 <div
-                                  className="md:w-1/3 px-2 relative"
+                                  className="relative px-2 md:w-1/3"
                                   key={`related-${each._id}`}
                                 >
                                   <Link
-                                    className="absolute left-0 right-0 top-0 bottom-0 z-50"
+                                    className="absolute top-0 bottom-0 left-0 right-0 z-50"
                                     to={`/project/${each.slug_url}`}
                                   />
 
                                   {each && (
                                     <div
-                                      className="rounded relative overflow-hidden cursor-pointer bg-white"
+                                      className="relative overflow-hidden bg-white rounded cursor-pointer"
                                       onClick={() =>
                                         redirectToDetail(each.slug_url)
                                       }
                                     >
-                                      <div className="relative block overflow-hidden h-48">
+                                      <div className="relative block h-48 overflow-hidden">
                                         <img
                                           src={
                                             each.media &&
@@ -1438,8 +1454,8 @@ export const ProjectDetailPage = props => {
                                           alt=""
                                         />
                                       </div>
-                                      <div className="p-2 w-full">
-                                        <h3 className="text-xl tracking-tight truncate text-black">
+                                      <div className="w-full p-2">
+                                        <h3 className="text-xl tracking-tight text-black truncate">
                                           {each.basic.title.trim() === ''
                                             ? 'Title'
                                             : each.basic.title}
@@ -1481,7 +1497,7 @@ export const ProjectDetailPage = props => {
                       </div>
                       <div className="lg:w-1/4 lg:pl-4">
                         <div style={{ position: 'sticky', top: 50 }}>
-                          <div className="border rounded mt-4 overflow-hidden bg-white p-4">
+                          <div className="p-4 mt-4 overflow-hidden bg-white border rounded">
                             <div className="text-base font-normal">
                               <h2 className="text-xl font-bold">
                                 Contact Developer
@@ -1495,7 +1511,7 @@ export const ProjectDetailPage = props => {
                                 <label className="text-sm">Name</label>
                                 <div className="relative">
                                   <i
-                                    className="material-icons text-base"
+                                    className="text-base material-icons"
                                     style={{
                                       position: 'absolute',
                                       left: 5,
@@ -1505,7 +1521,7 @@ export const ProjectDetailPage = props => {
                                     person_pin
                                   </i>
                                   <input
-                                    className="inputbox bg-white"
+                                    className="bg-white inputbox"
                                     style={{ paddingLeft: 35 }}
                                     id="grid-name"
                                     type="text"
@@ -1526,7 +1542,7 @@ export const ProjectDetailPage = props => {
                                 </label>
                                 <div className="relative">
                                   <i
-                                    className="material-icons text-base"
+                                    className="text-base material-icons"
                                     style={{
                                       position: 'absolute',
                                       left: 5,
@@ -1536,7 +1552,7 @@ export const ProjectDetailPage = props => {
                                     mail
                                   </i>
                                   <input
-                                    className="inputbox bg-white"
+                                    className="bg-white inputbox"
                                     style={{ paddingLeft: 35 }}
                                     id="grid-email"
                                     type="text"
@@ -1557,7 +1573,7 @@ export const ProjectDetailPage = props => {
                                 </label>
                                 <div className="relative">
                                   <i
-                                    className="material-icons text-base"
+                                    className="text-base material-icons"
                                     style={{
                                       position: 'absolute',
                                       left: 5,
@@ -1567,7 +1583,7 @@ export const ProjectDetailPage = props => {
                                     smartphone
                                   </i>
                                   <input
-                                    className="inputbox bg-white"
+                                    className="bg-white inputbox"
                                     style={{ paddingLeft: 35 }}
                                     placeholder=""
                                     type="text"
@@ -1587,7 +1603,7 @@ export const ProjectDetailPage = props => {
                                   Message
                                 </label>
                                 <textarea
-                                  className="inputbox bg-white"
+                                  className="bg-white inputbox"
                                   cols="45"
                                   rows="5"
                                   value={offer.message}
@@ -1603,7 +1619,7 @@ export const ProjectDetailPage = props => {
                               <div className="text-right">
                                 <button
                                   type="button"
-                                  className="py-2 px-6 rounded mt-2 text-sm text-blue text-white bg-primary font-bold"
+                                  className="px-6 py-2 mt-2 text-sm font-bold text-white rounded text-blue bg-primary"
                                   onClick={handleMakeOffer}
                                 >
                                   {offer_loading ? '...' : 'Send Message'}
@@ -1612,9 +1628,9 @@ export const ProjectDetailPage = props => {
                             </div>
                           </div>
 
-                          <div className="flex justify-between items-center py-4">
+                          <div className="flex items-center justify-between py-4">
                             <button
-                              className="border rounded border-gray-300 text-red-600 text-sm py-1 px-2 inline-block cursor-pointer hover:border-red-600"
+                              className="inline-block px-2 py-1 text-sm text-red-600 border border-gray-300 rounded cursor-pointer hover:border-red-600"
                               onClick={() => handleFavorite()}
                             >
                               {favorite.is_favourite ? (
@@ -1635,7 +1651,7 @@ export const ProjectDetailPage = props => {
                               Favourite
                             </button>
 
-                            <div className="inline-flex justify-end relative">
+                            <div className="relative inline-flex justify-end">
                               <FacebookShareButton className="ml-2" url={url}>
                                 <FacebookIcon size={24} round />
                               </FacebookShareButton>
@@ -1666,7 +1682,7 @@ export const ProjectDetailPage = props => {
                     <div className="mb-12">
                       <span
                         onClick={closeType}
-                        className="cursor-pointer absolute bg-black bg-opacity-50 px-5 py-2 text-white right-0 top-0 mr-4 mt-2"
+                        className="absolute top-0 right-0 px-5 py-2 mt-2 mr-4 text-white bg-black bg-opacity-50 cursor-pointer"
                       >
                         CLOSE
                       </span>
@@ -1715,7 +1731,7 @@ let settings = {
   autoplay: false,
   autoplaySpeed: 2000,
   focusOnSelect: true,
-  arrows:true,
+  arrows: true,
 };
 
 ProjectDetailPage.propTypes = {

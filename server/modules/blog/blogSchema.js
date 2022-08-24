@@ -26,6 +26,7 @@ const blogSchema = new schema({
   added_at: { type: Date, default: Date.now },
   updated_by: { type: schema.Types.ObjectId, ref: 'users' },
   updated_at: { type: Date, default: Date.now },
+  view_count: { type: Number, default: 0 },
 });
 
 module.exports = Blog = mongoose.model('blog', blogSchema);

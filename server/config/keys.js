@@ -1,6 +1,7 @@
 module.exports = {
+  mongoURI: 'mongodb://localhost:27017/nepal',
   //mongoURI: 'mongodb://nepalhomes:nepalhomes1@ds263927.mlab.com:63927/nepalhomes',
-  mongoURI: 'mongodb+srv://nepalhomes1:nepalhomes1@dev.ruscd.mongodb.net/nhdb?retryWrites=true&w=majority',
+  // mongoURI: 'mongodb+srv://nepalhomes1:nepalhomes1@dev.ruscd.mongodb.net/nhdb?retryWrites=true&w=majority',
   recaptcha: { secretKey: '6LcSQ78UAAAAAGgk9xiiizLFot29zyeAtC2b3JQX', siteKey: '6LcSQ78UAAAAAFlkl1dCE5T5l8rN4kQnYYNAP0Jc' },
   secretOrKey: 'jwtsecret',
   tokenExpireTime: 3600000,
